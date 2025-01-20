@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>SQL Script Generator</h1>
+    <form (ngSubmit)="generateScript()" #promptForm="ngForm">
+      <div class="form-group">
+        <label for="prompt">Enter your prompt:</label>
+        <textarea
+          id="prompt"
+          class="form-control"
+          name="prompt"
+          [(ngModel)]="userPrompt"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!promptForm.form.valid">
+        Generate SQL Script
+      </button>
+    </form>
+  
+    <div *ngIf="generatedScript" class="mt-4">
+      <h2>Generated SQL Script:</h2>
+      <pre>{{ generatedScript }}</pre>
+    </div>
+  </div>
+  
