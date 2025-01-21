@@ -1,0 +1,1 @@
+Your 4.x library does not work primarily because Node 23 does not properly handle ESM exports in the openai package. Version 3.x works because it supports CommonJS and avoids Node 23’s ESM limitations. To use openai@4.x successfully, you must switch to a stable Node release (Node 18 or 20) and set up your project with ESM.
