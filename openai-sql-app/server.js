@@ -39,7 +39,7 @@ if (!process.env.OPENAI_API_KEY) {
 // such as generating text or completing a chat.
 
 app.post('/generate-sql', async (req, res) => {
-  // Request sent to OpenAI
+  // so the endpoint path: http://localhost:3000/generate-sql
   try {
     const { prompt } = req.body;
     const response = await openai.createChatCompletion({

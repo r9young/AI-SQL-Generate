@@ -37,10 +37,11 @@ if (!process.env.OPENAI_API_KEY) {
 // and you create an instance of it to interact with the OpenAI API. 
 // Then you use methods like createChatCompletion on that instance to perform specific actions, 
 // such as generating text or completing a chat.
+
 app.post('/generate-sql', async (req, res) => {
+  // so the endpoint path: http://localhost:3000/generate-sql
   try {
     const { prompt } = req.body; // Extract user prompt from the request body
-
     // Send a request to OpenAI Chat Completion endpoint
     const response = await openai.createChatCompletion({
       model: 'gpt-4', // Using gpt-4 model
@@ -71,4 +72,3 @@ app.listen(PORT, () => {
 });
 
 
-// so the endpoint path: http://localhost:3000/generate-sql
