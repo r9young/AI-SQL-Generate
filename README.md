@@ -1,5 +1,7 @@
 # OpenAI SQL Generator
 
+This app is designed purely for learning purposes. It utilizes the OpenAI API and Angular for the front-end interface. It aims to help you understand the basics of using the OpenAI API, integrating it into a simple application, and learning the fundamentals of the Angular framework. 
+
 This project is a web application that allows users to input a prompt (such as a request for a SQL script), sends that prompt to the OpenAI API, and returns the generated SQL script to display on the frontend.
 
 
