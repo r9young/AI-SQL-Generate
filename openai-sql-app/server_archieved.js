@@ -37,35 +37,38 @@ if (!process.env.OPENAI_API_KEY) {
 // and you create an instance of it to interact with the OpenAI API. 
 // Then you use methods like createChatCompletion on that instance to perform specific actions, 
 // such as generating text or completing a chat.
-
 app.post('/generate-sql', async (req, res) => {
-  // Request sent to OpenAI
   try {
-    const { prompt } = req.body;
+    const { prompt } = req.body; // Extract user prompt from the request body
+
+    // Send a request to OpenAI Chat Completion endpoint
     const response = await openai.createChatCompletion({
-    // ** it is createChatCompletion method, not createCompletion **
-      model: 'gpt-4',
-      // prompt: `Write a SQL script for the following request:\n\n${prompt}`,
+      model: 'gpt-4', // Using gpt-4 model
       messages: [
-        { role: 'system', content: 'You are a helpful assistant that writes SQL scripts. Only return the SQL script without any additional explanation or text.' },
-        { role: 'assistant', content: 'SELECT * FROM table_name WHERE condition;' },
+        { role: 'system', content: 'You are a helpful assistant that writes SQL scripts.' },
         { role: 'user', content: `Write a SQL script for the following request:\n\n${prompt}` }
       ],
-      max_tokens: 200,
-      temperature: 0.7,
+      max_tokens: 200, // Limit the length of the output
+      temperature: 0.7, // Moderate creativity
     });
 
-    // if Reponse Received from OpenAI, processing the response
+    // Extract the generated SQL from the response
     const generatedSQL = response.data.choices[0].message.content.trim();
+
+    // Send the generated SQL back to the client
     res.status(200).json({ sql: generatedSQL });
   } catch (error) {
-    console.error('Error generating SQL:', error);
-    res.status(500).json({ error: 'Failed to generate SQL' });
+    // Log and return error details
+    console.error('Error generating SQL:', error.response?.data || error.message);
+    res.status(500).json({ error: 'Failed to generate SQL', details: error.response?.data || error.message });
   }
 });
 
 // Start the Server
-const PORT = process.env.PORT || 3000; // Use port from environment variable or default to 3000
+const PORT = process.env.PORT || 4000; // Use port from environment variable or default to 3000
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+// so the endpoint path: http://localhost:3000/generate-sql
