@@ -4,8 +4,14 @@ This app is designed purely for learning purposes. It utilizes the OpenAI API an
 
 This project is a web application that allows users to input a prompt (such as a request for a SQL script), sends that prompt to the OpenAI API, and returns the generated SQL script to display on the frontend.
 
+![preview](./asset/preview_1.jpeg)
 
-![preview](./asset/preview.jpeg)
+If you forget to provide a tab name, the AI will remind you to do so:
+
+![preview](./asset/preview_2.jpeg)
+![preview](./asset/preview_3.jpeg)
+
+
 
 ## Project Structure
 
