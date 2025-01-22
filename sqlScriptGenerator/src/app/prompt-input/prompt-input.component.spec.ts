@@ -1,35 +1,23 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-prompt-input',
-  templateUrl: './prompt-input.component.html',
-  styleUrls: ['./prompt-input.component.css'],
-  standalone: true,
-  imports: [FormsModule, CommonModule]
-})
-export class PromptInputComponent {
-  userPrompt: string = '';
-  generatedScript: string | null = null;
+import { PromptInputComponent } from './prompt-input.component';
 
-  constructor(private http: HttpClient) {}
+describe('PromptInputComponent', () => {
+  let component: PromptInputComponent;
+  let fixture: ComponentFixture<PromptInputComponent>;
 
-  generateScript() {
-    if (this.userPrompt.trim()) {
-      const backendUrl = 'http://your-backend-endpoint/generate-sql';
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [PromptInputComponent]
+    })
+    .compileComponents();
 
-      this.http.post<{ sql: string }>(backendUrl, { prompt: this.userPrompt })
-        .subscribe({
-          next: (response) => {
-            this.generatedScript = response.sql;
-          },
-          error: (error) => {
-            console.error('Error generating SQL script:', error);
-            this.generatedScript = 'Failed to generate SQL script. Please try again.';
-          }
-        });
-    }
-  }
-}
+    fixture = TestBed.createComponent(PromptInputComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import axios from 'axios';
 
 @Component({
   selector: 'app-prompt-input',
@@ -19,7 +20,7 @@ export class PromptInputComponent {
 
   generateScript() {
     if (this.userPrompt.trim()) {
-      const backendUrl = 'http://your-backend-endpoint/generate-sql';
+      const backendUrl = 'http://localhost:3000/generate-sql';
 
       this.http.post<{ sql: string }>(backendUrl, { prompt: this.userPrompt })
         .subscribe({
