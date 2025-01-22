@@ -47,7 +47,7 @@ app.post('/generate-sql', async (req, res) => {
       model: 'gpt-4',
       // prompt: `Write a SQL script for the following request:\n\n${prompt}`,
       messages: [
-        { role: 'system', content: 'You are a helpful assistant that writes SQL scripts. Only return the SQL script without any additional explanation or text.' },
+        { role: 'system', content: 'You are a helpful assistant that writes SQL scripts. If You get the table name please return the SQL script without any additional explanation or text, otherwise please remind me give you table name' },
         { role: 'assistant', content: 'SELECT * FROM table_name WHERE condition;' },
         { role: 'user', content: `Write a SQL script for the following request:\n\n${prompt}` }
       ],

@@ -45,8 +45,8 @@ app.post('/generate-sql', async (req, res) => {
     const response = await openai.createChatCompletion({
       model: 'gpt-4', // Using gpt-4 model
       messages: [
-        { role: 'system', content: 'You are a helpful assistant that writes SQL scripts.' },
-        { role: 'user', content: `Write a SQL script for the following request:\n\n${prompt}` }
+        { role: 'system', content: 'You are a helpful assistant that writes SQL scripts. ' },
+        { role: 'user', content: `Write a SQL script for the following request:\n\n${prompt}, You also check whether I give you the table name. If not, please ask me the table name.` }
       ],
       max_tokens: 200, // Limit the length of the output
       temperature: 0.7, // Moderate creativity
