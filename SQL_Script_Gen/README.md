@@ -57,3 +57,17 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+---
+
+
+## Why do I directly call the generateScript() method in the HTML file instead of using PromptInputComponent.generateScript()?
+
+In Angular templates, you're working with the instance of the component that Angular creates for you. This instance is automatically tied to the component's template.
+
+For example:
+- In the HTML, when you call `generateScript()`, Angular invokes this method on the **instance** of the `PromptInputComponent` that is managing that part of the DOM.
+- Similarly, when you bind to a property like `userPrompt` (`[(ngModel)]="userPrompt"`), it is referring to the `userPrompt` property on the same instance.
+
+The class itself (`PromptInputComponent`) defines the blueprint, but Angular creates an instance of it to handle each usage of the component. The template is always bound to this instance, which is why you don't need to explicitly refer to the class name or manage the instance manually.
