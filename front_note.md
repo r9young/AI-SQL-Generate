@@ -61,3 +61,26 @@ You can now start building your app by creating components, services, modules, e
 ---
 
 Let me know if you'd like help configuring or extending this new Angular app!
+
+
+---
+
+### **ng new newapp will init git automatically**
+
+**Angular to initialize Git automatically**, if you don't want Angular to initilize Git automatically, you could use the `--skip-git` flag:
+
+### What to Do:
+When generating the Angular app, use the `--skip-git` flag:
+```bash
+ng new front --skip-git
+```
+
+### After Creating the Front-End App:
+1. The Angular app will be created in the `front` folder without a `.git` directory.
+2. You can add the `front` folder to your existing root-level Git repository and commit the changes:
+   ```bash
+   git add front
+   git commit -m "Add front-end Angular app"
+   ```
+
+This ensures your project stays clean and organized, with all version control managed from the root. Let me know if you'd like help with anything else!
