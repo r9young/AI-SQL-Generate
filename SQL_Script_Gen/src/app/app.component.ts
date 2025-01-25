@@ -1,28 +1,26 @@
 import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'sql-script-gen';
-}
-
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { PromptInputComponent } from './prompt-input/prompt-input.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    PromptInputComponent
-  ],
-  imports: [
-    BrowserModule,
-  ],
-  bootstrap: [AppComponent]
+@Component({
+  standalone: true,
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  imports: [PromptInputComponent],
 })
-export class AppModule {}
+export class AppComponent {}
 
+
+// import { Component } from '@angular/core';
+// // import { RouterOutlet } from '@angular/router';
+// import { PromptInputComponent } from './prompt-input/prompt-input.component';
+
+// @Component({
+//   selector: 'app-root',
+//   // imports: [RouterOutlet],
+//   templateUrl: './app.component.html',
+//   styleUrl: './app.component.css',
+//   imports: [PromptInputComponent],
+// })
+// export class AppComponent {
+//   title = 'SQL_Script_Gen';
+// }
